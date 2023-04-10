@@ -4,7 +4,7 @@
 let app = new Vue({
     el: "#app",
     data: {
-        freq: 440,
+        freq: 763,
         amp: 0.5,
         mod: 0,
         modamp: 10,
@@ -12,6 +12,9 @@ let app = new Vue({
         freq_mod_amp: 0,
         carrier: null,
         amp_modulator: null,
+        freq_modulator: null,
+        triphase: false,
+        strokeSpeed: 0, 
         p: null,
         p5: null
     },
@@ -29,7 +32,7 @@ let app = new Vue({
                 const freq = parseFloat(self.freq);
                 const amp = parseFloat(self.amp);
                 const mod = parseFloat(self.mod);
-                const modamp = parseFloat(self.modamp / 100);
+                const modamp = parseFloat(self.modamp/100);
                 const freqmod = parseFloat(self.freq_mod);
                 const freqmodamp = parseFloat(self.freq_mod_amp);
                 self.carrier.freq(freq);
@@ -39,7 +42,6 @@ let app = new Vue({
                 self.amp_modulator.amp(modamp);
                 self.freq_modulator.freq(freqmod);
                 self.freq_modulator.amp(freqmodamp);
-                // self.amp_modulator.scale(-1, 1, -1, 1);
                 // self.carrier.freq(freq + self.amp_modulator.scale(-1, 1, -10, 10));
                 // self.carrier.amp(self.amp_modulator.scale(-1, 1, 0, 1));
             };
@@ -47,6 +49,7 @@ let app = new Vue({
             self.carrier.setType("sine");
             self.amp_modulator = new p5.Oscillator('sine');
             self.amp_modulator.disconnect();
+            self.amp_modulator.scale(-1, 1, 0, 1);
             self.freq_modulator = new p5.Oscillator('sine');
             self.freq_modulator.disconnect();
             self.carrier.amp(self.amp_modulator);

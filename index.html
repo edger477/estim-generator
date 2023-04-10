@@ -36,12 +36,12 @@
                 <label for="mod-slider">Amplitude Modulation:</label>
                 <input id="mod-slider" type="range" min="0" max="100" step="0.01" v-model="mod">
                 <input id="mod-text" type="number" min="0" max="100" step="0.01" v-model="mod">
-                <span>%</span>
+                <span>Hz</span>
             </div>
             <div>
                 <label for="mod-amp-slider">Amplitude Modulation amount:</label>
                 <input id="mod-amp-slider" type="range" min="0" max="100" step="1" v-model="modamp">
-                <span>{{ modamp }}</span>
+                <span>{{ modamp }}</span>%
             </div>
             <div>
                 <label for="freq-mod-slider">Frequency Modulation:</label>
