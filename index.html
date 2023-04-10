@@ -11,7 +11,8 @@
     <div id="app">
         <div>
             <label for="freq-slider">Frequency:</label>
-            <input id="freq-slider" type="range" min="100" max="1000" step="10" v-model="freq">
+            <input id="freq-slider" type="range" min="300" max="1500" step="1" v-model="freq">
+            <input id="freq-text" type="number" min="300" max="1500" step="1" v-model="freq">
             <span>{{ freq }} Hz</span>
         </div>
         <div>
@@ -20,15 +21,26 @@
             <span>{{ amp }}</span>
         </div>
         <div>
-            <label for="mod-slider">Modulation:</label>
+            <label for="mod-slider">Amplitude Modulation:</label>
             <input id="mod-slider" type="range" min="0" max="100" step="0.01" v-model="mod">
             <input id="mod-text" type="number"  min="0" max="100" step="0.01" v-model="mod">
             <span>{{ mod }}</span>
         </div>
         <div>
-            <label for="mod-amp-slider">Modulation amount:</label>
+            <label for="mod-amp-slider">Amplitude Modulation amount:</label>
             <input id="mod-amp-slider" type="range" min="0" max="100" step="1" v-model="modamp">
             <span>{{ modamp }}</span>
+        </div>
+        <div>
+            <label for="freq-mod-slider">Frequency Modulation:</label>
+            <input id="freq-mod-slider" type="range" min="0" max="100" step="0.01" v-model="freq_mod">
+            <input id="freq-mod-text" type="number"  min="0" max="100" step="0.01" v-model="freq_mod">
+            <span>{{ freq_mod }}</span>
+        </div>
+        <div>
+            <label for="freq-mod-amp-slider">Frequency Modulation amount:</label>
+            <input id="freq-mod-amp-slider" type="range" min="0" max="100" step="1" v-model="freq_mod_amp">
+            <span>{{ freq_mod_amp }}</span>
         </div>
         <button @click="playSound">Play</button>
         <button @click="stopSound">Stop</button>
