@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/addons/p5.sound.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label for="freq-slider">Frequency:</label>
+            <input id="freq-slider" type="range" min="100" max="1000" step="10" v-model="freq">
+            <span>{{ freq }} Hz</span>
+        </div>
+        <div>
+            <label for="amp-slider">Amplitude:</label>
+            <input id="amp-slider" type="range" min="0" max="1" step="0.01" v-model="amp">
+            <span>{{ amp }}</span>
+        </div>
+        <div>
+            <label for="mod-slider">Modulation:</label>
+            <input id="mod-slider" type="range" min="0" max="100" step="0.01" v-model="mod">
+            <input id="mod-text" type="number"  min="0" max="100" step="0.01" v-model="mod">
+            <span>{{ mod }}</span>
+        </div>
+        <div>
+            <label for="mod-amp-slider">Modulation amount:</label>
+            <input id="mod-amp-slider" type="range" min="0" max="100" step="1" v-model="modamp">
+            <span>{{ modamp }}</span>
+        </div>
+        <button @click="playSound">Play</button>
+        <button @click="stopSound">Stop</button>
+        <!-- <button @click="saveSound">Save</button> -->
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
