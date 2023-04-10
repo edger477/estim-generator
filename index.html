@@ -52,6 +52,7 @@
             <div>
                 <label for="freq-mod-amp-slider">Frequency Modulation amount:</label>
                 <input id="freq-mod-amp-slider" type="range" min="0" max="200" step="1" v-model="freq_mod_amp">
+                <input id="freq-mod-amp-slider" type="number" min="0" max="200" step="1" v-model="freq_mod_amp">
                 <span>Hz</span>
             </div>
             <button @click="playSound" class="btn btn-outline-success">Play</button>
