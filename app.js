@@ -13,10 +13,17 @@ let app = new Vue({
         carrier: null,
         amp_modulator: null,
         freq_modulator: null,
-        triphase: false,
-        strokeSpeed: 0, 
+        phase_modulator: null,
         p: null,
-        p5: null
+        p5: null,
+        recorder: null
+    },
+    watch: {
+        freq(newfreq, oldFreq) {
+            
+          var diff = newfreq - oldFreq;
+          this.amp = Math.max(0, Math.min(1, parseFloat(this.amp) + (diff/10000.0)));
+        }
     },
     methods: {
         render(h) {
@@ -32,7 +39,7 @@ let app = new Vue({
                 const freq = parseFloat(self.freq);
                 const amp = parseFloat(self.amp);
                 const mod = parseFloat(self.mod);
-                const modamp = parseFloat(self.modamp/100);
+                const modamp = parseFloat(self.modamp / 100);
                 const freqmod = parseFloat(self.freq_mod);
                 const freqmodamp = parseFloat(self.freq_mod_amp);
                 self.carrier.freq(freq);
@@ -44,21 +51,29 @@ let app = new Vue({
                 self.freq_modulator.amp(freqmodamp);
                 // self.carrier.freq(freq + self.amp_modulator.scale(-1, 1, -10, 10));
                 // self.carrier.amp(self.amp_modulator.scale(-1, 1, 0, 1));
+
             };
             self.carrier = new p5.Oscillator();
             self.carrier.setType("sine");
             self.amp_modulator = new p5.Oscillator('sine');
             self.amp_modulator.disconnect();
             self.amp_modulator.scale(-1, 1, 0, 1);
+            self.carrier.amp(self.amp_modulator);
+
             self.freq_modulator = new p5.Oscillator('sine');
             self.freq_modulator.disconnect();
-            self.carrier.amp(self.amp_modulator);
             self.carrier.freq(self.freq_modulator);
+
+            setTimeout(function () {
+                // self.recorder = new p5.SoundRecorder();
+                // self.recorder.setInput(self.carrier);
+            }, 1000);
+
             // self.amp_modulator.setType('sine');
         },
         playSound() {
             this.carrier.start();
-            this.carrier.amp(1.0);
+            // this.carrier.amp(1.0);
             this.amp_modulator.start();
             this.freq_modulator.start();
             // setTimeout(() => {
@@ -74,7 +89,12 @@ let app = new Vue({
         saveSound() {
             const filename = `sound_${this.freq.toFixed(0)}_${this.amp.toFixed(2)}_${this.mod.toFixed(0)}.mp3`;
             // var r = new this.p.SoundRecorder();
-            this.p5.saveSound(this.osc, filename);
+            // var soundFile = new p5.SoundFile();
+            // this.recorder.record(soundFile);
+            // setTimeout(() => {
+            //     this.p5.saveSound(soundFile, filename);
+
+            // }, 5000);
         }
     },
     mounted() {
