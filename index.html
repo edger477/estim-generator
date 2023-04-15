@@ -30,7 +30,8 @@
             <div>
                 <label for="amp-slider">Amplitude:</label>
                 <input id="amp-slider" type="range" min="0" max="1" step="0.01" v-model="amp">
-                <span>{{ amp }}</span>
+                <input id="freq-text" type="number" min="0" max="1" step="0.01" v-model="freq">
+                <span>%</span>
             </div>
             <div>
                 <label for="mod-slider">Amplitude Modulation:</label>
@@ -57,7 +58,7 @@
             </div>
             <button @click="playSound" class="btn btn-outline-success">Play</button>
             <button @click="stopSound" class="btn btn-outline-success">Stop</button>
-            <!-- <button @click="saveSound">Save</button> -->
+            <!-- <button @click="saveSound" class="btn btn-outline-success">Save</button> -->
         </div>
 
     </div>
