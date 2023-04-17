@@ -4,13 +4,8 @@ import SoundEditor from '../components/SoundEditor.vue'
 
 <template>
     <main>
-        <SoundEditor name="test"></SoundEditor>
-        <!-- <SoundEditor 
-        v-for="(sound, index) in sounds"
-            :item="sound"
-            :index="index"
-            :key="item.name" 
-            :name="newItemName"/> -->
+        <SoundEditor></SoundEditor>
+
     </main>
 </template>
 
@@ -21,7 +16,7 @@ export default {
     },
     data() {
         return {
-            // sounds: [new SoundEditor()],
+            sounds: [{}],
             newItemName:'new sound'
         }
     },

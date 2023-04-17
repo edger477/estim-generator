@@ -32,7 +32,7 @@ import * as Tone from 'tone'
 
 export default {
     props: {
-        name: { required: true, type: String },
+        // name: { required: true, type: String },
         // frequency: { required: true, type: Number, defaut: 673 }
     },
     data() {
