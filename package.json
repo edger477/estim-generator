@@ -5,12 +5,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build-gh-pages": "vite build --base=/estim-generator/",
     "preview": "vite preview",
     "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vueuse/core": "^10.0.2",
     "pinia": "^2.0.32",
     "tone": "^14.7.77",
     "vue": "^3.2.47",

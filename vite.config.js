@@ -14,5 +14,9 @@ export default defineConfig({
   },
   optimizeDeps: {
     exclude: ["oh-vue-icons/icons"]
-  }
+  },
+  publicPath: process.env.NODE_ENV === 'production'
+    //? '/' + process.env.CI_PROJECT_NAME + '/'
+    ? '/estim-generator/'
+    : '/'
 })
